@@ -21,12 +21,16 @@ gulp.task('browserify', function(){
 gulp.task('copy', function(){
     gulp.src('src/index.html')
         .pipe(gulp.dest('dist'));
-    gulp.src('src/css/*.*')
+    gulp.src('src/styles/css/*.*')
         .pipe(gulp.dest('dist/css'));
     gulp.src('src/js/vendors/*.*')
         .pipe(gulp.dest('dist/js'));
-    gulp.src('src/fonts/*.*')
+    gulp.src('src/styles/fonts/**/*.*')
         .pipe(gulp.dest('dist/fonts'));
+});
+
+gulp.task('auto-build', ['browserify', 'copy'], function(){
+  return gulp.watch('src/**/*.*', ['browserify', 'copy'])
 });
 
 gulp.task('default', ['browserify', 'copy'], function(){

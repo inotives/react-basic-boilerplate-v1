@@ -2,11 +2,13 @@
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
+var morgan     = require('morgan');
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(morgan('combined'));
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -14,6 +16,7 @@ app.use(function(req, res, next) {
 
     next();
 });
+
 
 var port = process.env.PORT || 1999;        // set our port
 
@@ -29,4 +32,4 @@ app.use('/api', api);
 // START THE SERVER
 // =============================================================================
 app.listen(port);
-console.log('Magic happens on port::' + port);
+console.log('Server is listening to port::' + port);

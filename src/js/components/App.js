@@ -38,6 +38,9 @@ var App = React.createClass({
         </div>
       );
   },
+  componentDidMount: function(){
+    this.getUserData();
+  },
   getUserData: function(){
     $.ajax({
       url: 'http://localhost:1999/api/users',
@@ -50,9 +53,6 @@ var App = React.createClass({
         alert(err);
       }.bind(this)
     });
-  },
-  componentDidMount: function(){
-    this.getUserData();
   }
 });
 
