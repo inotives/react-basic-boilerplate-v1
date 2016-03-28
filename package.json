@@ -1,7 +1,7 @@
 {
-  "name": "react-basic-contact-list",
+  "name": "react-basic-boilerplate-v1",
   "version": "0.1.0",
-  "description": "simple contact list app with firebase",
+  "description": "simple react boilerplate",
   "main": "index.js",
   "scripts": {
     "setup": "npm install && bower install",
@@ -10,9 +10,6 @@
     "backend": "node mock_server/server.js",
     "web": "node_modules/.bin/http-server ./dist -p 1344"
   },
-  "keywords": [
-    "inotives"
-  ],
   "author": "TONI",
   "license": "MIT",
   "devDependencies": {
