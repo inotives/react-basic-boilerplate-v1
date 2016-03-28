@@ -2,6 +2,8 @@ var React = require('react');
 var WebBanner = require('./WebBanner');
 var UserList = require('./UserList');
 var NavBar = require('./NavBar');
+var Footer = require('./Footer');
+var Contents = require('./Contents');
 
 //
 function getAppState(){
@@ -15,11 +17,12 @@ var App = React.createClass({
   getInitialState: function(){
     return {users: ''};
   },
+  getDefaultProps: function(){
+    return  {
+      brand: 'Simple Web Template'
+    }
+  },
   render: function(){
-      var bannerInfo = {
-        title: "Mock up Users",
-        descr: "This is just a simple mock up api server along with it simple react web app",
-      }
       // if userList data is present, call up UI component of UserList else it is empty
       if(this.state.users){
         var userList = <UserList users={this.state.users}/>
@@ -31,10 +34,9 @@ var App = React.createClass({
       // Render the page with the components
       return (
         <div>
-          <NavBar />
-          <WebBanner bannerInfo={bannerInfo}/>
-          <hr />
-          {userList}
+          <NavBar brand={this.props.brand}/>
+          <Contents />
+          <Footer />
         </div>
       );
   },
