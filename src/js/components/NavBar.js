@@ -1,7 +1,27 @@
 var React = require('react');
+var config = require('../../config.js');
 
 var NavBar = React.createClass({
+  getDefaultProps: function(){
+    return {
+      brand: config.brand
+    }
+  },
   render: function(){
+    var homeActive = '', aboutActive = '', contactActive='', userActive='', chartActive='';
+    // handle navbar click active
+    if(this.props.page === 'Home'){
+      homeActive = 'active';
+    }else if(this.props.page === 'About'){
+      aboutActive = 'active';
+    }else if(this.props.page === 'Contact'){
+      contactActive = 'active';
+    }else if(this.props.page === 'User'){
+      userActive = 'active';
+    }else if(this.props.page === 'Chart'){
+      chartActive = 'active';
+    }
+
     return (
       <div className="container">
         <nav className="navbar navbar-default nav-top-10">
@@ -17,9 +37,11 @@ var NavBar = React.createClass({
             </div>
             <div id="navbar" className="navbar-collapse collapse">
               <ul className="nav navbar-nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li className={homeActive}><a onClick={this.props.homeClick} href="#">Home</a></li>
+                <li className={aboutActive}><a onClick={this.props.aboutClick} href="#">About</a></li>
+                <li className={contactActive}><a onClick={this.props.contactClick} href="#">Contact</a></li>
+                <li className={userActive}><a onClick={this.props.userClick} href="#">User List</a></li>
+                <li className={chartActive}><a onClick={this.props.chartClick} href="#">Charting</a></li>
               </ul>
               <ul className="nav navbar-nav navbar-right">
                 <li><a href="#">Login</a></li>

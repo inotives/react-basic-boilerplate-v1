@@ -1,11 +1,16 @@
 var React = require('react');
 var WebBanner = require('./WebBanner');
 
-var Contents = React.createClass({
+var AboutPage = React.createClass({
+  getInitialState: function(){
+    return {
+
+    }
+  },
   render: function(){
     var bannerInfo = {
-      title: "Home Page",
-      descr: "This is the Home page of the website",
+      title: "About Page",
+      descr: "This is the about page of the website",
     }
     return (
       <div>
@@ -19,4 +24,4 @@ var Contents = React.createClass({
   }
 });
 
-module.exports = Contents;
+module.exports = AboutPage;
